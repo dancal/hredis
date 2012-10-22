@@ -2,8 +2,6 @@
 
 # Hredis #
 
-Hredis is a Predis(http://github.com/nrk/predis/) Extends Module.
-
 ## How to use Hredis ##
 
 ``` php
@@ -12,6 +10,9 @@ require_once 'hredis/hredis.php';
 /*
 	example
 	$sServer    ='10.128.5.28:8000-8007;10.128.5.29:8008-8015;10.128.5.30:8016-8023;10.128.5.31:8024-8031';
+
+	servers and ports must to 2^x
+
 */
 $sServer	= "{SERVERIP}:{START_PORT}-{END-PORT};{SERVERIP}:{START_PORT}-{END-PORT}";
 
