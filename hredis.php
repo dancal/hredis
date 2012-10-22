@@ -60,10 +60,18 @@ class hRedis extends Predis\Client {
 			$host		= $temp[0];
 			$port		= $temp[1];
 
-			$rSvrItem	= array('host'=>$host, 'port' => $port, 'database'=>$databases, 'alias'=> $nIndex);
-			array_push($this->rServers, $rSvrItem);
+			$lsport		= explode("-", $port);;
+			$sport		= $lsport[0];
+			$eport		= $lsport[1];
 
-			$nIndex++;
+			for ( $i = $sport; $i <= $eport; $i++ ) {
+
+				$rSvrItem	= array('host'=>$host, 'port' => $i, 'database'=>$databases, 'alias'=> $nIndex);
+				array_push($this->rServers, $rSvrItem);
+
+				$nIndex++;
+
+			}
 
 		}
 
