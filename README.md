@@ -1,5 +1,12 @@
 <?
 
+# Hredis #
+
+Hredis is a Predis(http://github.com/nrk/predis/) Extends Module.
+
+## How to use Hredis ##
+
+``` php
 require_once 'hredis/hredis.php';
 
 /*
@@ -34,5 +41,6 @@ for ($i = 0; $i < 1000; $i++) {
     $client->del("key:$i");
 }
 $client->showStatus();
+```
 
 ?>
