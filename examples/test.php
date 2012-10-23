@@ -1,6 +1,6 @@
 <?
 
-require_once 'hredis/hredis.php';
+require_once 'hredis/autoload.php';
 
 $sServer	='10.128.5.28:8000-8007;10.128.5.29:8008-8015;10.128.5.30:8016-8023;10.128.5.31:8024-8031';
 
