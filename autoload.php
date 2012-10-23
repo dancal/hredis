@@ -4,6 +4,13 @@ require_once __DIR__. '/lib/autoload.php';
 use Predis\Distribution\IDistributionStrategy;
 use Predis\Network\PredisCluster;
 
+$__redis_option__ = array(
+	'cluster' => function() {
+	 	$distributor = new NaiveDistributionStrategy();
+	    return new PredisCluster($distributor);
+	 },
+);
+
 class NaiveDistributionStrategy implements IDistributionStrategy {
     private $nodes;
     private $nodesCount;
@@ -44,13 +51,6 @@ class hRedis extends Predis\Client {
 
 	public function __construct($sServerList, $databases = 0) {
 
-		$options = array(
-    		'cluster' => function() {
-	    		$distributor = new NaiveDistributionStrategy();
-	    		return new PredisCluster($distributor);
-	    	},
-		);
-
 		$nIndex			= 0;
 		$this->rServers	= array();
 		$lsServer		= explode(";", trim($sServerList,";"));	
@@ -75,7 +75,8 @@ class hRedis extends Predis\Client {
 
 		}
 
-		parent::__construct($this->rServers,$options);
+		global $__redis_option__;
+		parent::__construct($this->rServers, $__redis_option__);
 	
 	}
 	
